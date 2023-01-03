@@ -39,11 +39,11 @@ const mostWheels = cars.filter(
 console.log("🚀 ~ file: main.js:36 ~ mostWheels", mostWheels);
 
 const carsWithWheels = {};
-for (let amount of wheels) {
+wheels.forEach((amount) => {
   carsWithWheels[amount + " wheels"] = cars.filter(
     (car) => car.wheels === amount
   ).length;
-}
+});
 console.log("🚀 ~ file: main.js:39 ~ carsWithWheels", carsWithWheels);
 
 // In Javascript, functions can be assigned to variables in the same way that strings or arrays can.
