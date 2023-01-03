@@ -30,7 +30,9 @@ console.log("🚀 ~ file: main.js:28 ~ eightWheelers", eightWheelers);
 const plates = cars.map((car) => car.plate);
 console.log("🚀 ~ file: main.js:30 ~ plates", plates);
 
-const lowestWeight = Math.min(...cars.map((car) => car.weight));
+const lowestWeight = cars.reduce((prevCar, currCar) =>
+  prevCar.weight > currCar.weight ? currCar : prevCar
+).weight;
 console.log("🚀 ~ file: main.js:32 ~ lowestWeight", lowestWeight);
 
 const mostWheels = cars.filter(
@@ -39,10 +41,9 @@ const mostWheels = cars.filter(
 console.log("🚀 ~ file: main.js:36 ~ mostWheels", mostWheels);
 
 const carsWithWheels = {};
-wheels.forEach((amount) => {
-  carsWithWheels[amount + " wheels"] = cars.filter(
-    (car) => car.wheels === amount
-  ).length;
+cars.forEach((car) => {
+  const currAmount = carsWithWheels[car.wheels + ""] || 0;
+  carsWithWheels[car.wheels + ""] = currAmount + 1;
 });
 console.log("🚀 ~ file: main.js:39 ~ carsWithWheels", carsWithWheels);
 
